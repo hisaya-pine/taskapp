@@ -1,2 +1,14 @@
 /**/
-
+.taskbox {
+    padding: 0.5em 1em;
+    margin: 10px 10px 0 10px;
+    color: rgb(51, 113, 200);
+    background: #ffffff;
+    border-bottom: solid 6px #9bb2ca;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+.taskbox p {
+    margin: 0; 
+    padding: 0;
+}

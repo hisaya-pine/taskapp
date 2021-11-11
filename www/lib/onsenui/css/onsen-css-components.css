@@ -113,8 +113,8 @@ h4, h5, h6 {
   bottom: 0;
   overflow-x: visible;
   overflow-y: hidden;
-  color: #1f1f21;
-  color: #1f1f21;
+  color: #ffffff;
+  /* color: #1f1f21; */
   -ms-overflow-style: none;
   -webkit-font-smoothing: antialiased;
 }
@@ -132,8 +132,8 @@ h4, h5, h6 {
   box-sizing: border-box;
 }
 .page__background {
-  background-color: #efeff4;
-  background-color: #efeff4;
+  background-color: #547ada;
+  /* background-color: #efeff4; */
   position: absolute;
   top: 0;
   left: 0;
