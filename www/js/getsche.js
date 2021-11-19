@@ -28,6 +28,7 @@
           var tasktime = ((((items[i].end.dateTime[1][0] * 60)) - (items[i].start.dateTime[1][0] * 60)) / 60) + (items[i].end.dateTime[1][1] - items[i].start.dateTime[1][1]) / 60;
 
           resultArea.insertAdjacentHTML('beforeend', '<div class="taskbox"><p>' + items[i].summary + ": " + items[i].start.dateTime[0][1] + "月" + items[i].start.dateTime[0][2] + "日" + " " + items[i].start.dateTime[1][0] + ":" + items[i].start.dateTime[1][1] + "~ (" + tasktime.toFixed(1) + "h)" + '</p></div>')
+         
 
         }
       }, function(reason) {

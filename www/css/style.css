@@ -12,3 +12,20 @@
     margin: 0; 
     padding: 0;
 }
+
+
+
+.fab {
+top: 400px; 
+right: 10px;
+left: 650px;
+padding: 6px 40px;
+}
+
+ons-fab.fab {
+    background-color:white;
+}
+
+ons-icon {
+    color:blue;
+}

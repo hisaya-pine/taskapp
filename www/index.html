@@ -54,7 +54,6 @@
 
 </head>
 <body>
-  <!-- プルリクテスト-->
   <ons-splitter>
     <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
       <ons-page>
@@ -89,26 +88,57 @@
           <ons-toolbar-button onclick="fn.open()">
             <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
           </ons-toolbar-button>
-        </div>
+        </div>  
         <div class="center">
           Home
         </div>
+
       </ons-toolbar>
+      <!--
+      <button class="fab fab--material fab--mini"><i class="zmdi zmdi-plus"></i></button>
+      -->
+
       <p style="text-align: left; padding-left: 20px; padding-top: 10px;">
         Today's Schedule
       </p>
 
       <!-- ここに今日のスケジュールを表示する -->
-
+      
       <p style="text-align: left; padding-left: 20px; padding-top: 40%;">
         Task List
+      </p>
 
+      <!---
+      <ons-list> 
+        <ons-list-item tappable>
+          <label class="left">
+            <ons-checkbox input-id="check-1"></ons-checkbox>
+          </label>
+          <label for="check-1" class="center">
+            <div id='resultArea'></div>
+          </label>
+        </ons-list-item> 
+      <ons-list>
+      -->
       <!-- ここにタスクの一覧を表示する -->
       <div id='resultArea'></div>
 
+    
+
+
+      
+      <ons-fab class="add_button" onclick="fn.load('addtask.html')" position="bottom right">
+          <ons-icon icon="md-plus"></ons-icon> 
+      </ons-fab>
+      
+      
       </p>
 
+      
+
     </ons-page>
+
+  
   </ons-template>
 
   <ons-template id="settings.html">
