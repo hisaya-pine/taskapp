@@ -7,14 +7,28 @@
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
 
+  <!-- <script src="js/test.js"></script> -->
+ 
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="js/getsche.js"></script>
+  <script src="js/show_todays_task.js"></script>
+  <script src="js/test-addsche.js"></script>
+  <script src="js/taskcolor.js"></script>
   
+  <!-- 
+  <script async defer src="https://apis.google.com/js/api.js"
+    onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
+  -->
 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="lib/h2vR425/h2vR.css">
+  <script src="lib/h2vR425/h2vR.js"></script>
 
   <script>
     //ons.ready(function() {
@@ -42,14 +56,25 @@
 
   <script>
     //タスク一覧を呼び出す
+    console.log("Started loading tasktable now.");
+
     document.addEventListener("init", function(event) {
         // initイベントが発生したページ
-        var page = event.target;    
-        if(page.id == 'needtable') {
+        var page = event.target;
+        if(page.id === "home-page") {
             // DOM操作
-            start();
+            startToday('today');
+            start('resultArea-home');
+            //var today = page.querySelector('#today');
+            //generateStoryBubbles(today);
+        }
+        else if(page.id === "tasktable-page") {
+            // DOM操作
+            start('resultArea-tasktable');
         }
     });
+
+    console.log("Finished loading tasktable now.");
   </script>
 
 </head>
@@ -67,7 +92,7 @@
           <ons-list-item onclick="fn.load('addtask.html')" tappable>
             新規タスク追加
           </ons-list-item>
-          <ons-list-item onclick="fn.load('##.html')" tappable>
+          <ons-list-item onclick="fn.load('addftask.html')" tappable>
             固定スケジュール
             <!-- 固定スケジュールの確認・編集、不要なら削除 -->
           </ons-list-item>
@@ -82,7 +107,7 @@
   </ons-splitter>
 
   <ons-template id="home.html">
-    <ons-page id="needtable">
+    <ons-page id="home-page">
       <ons-toolbar>
         <div class="left">
           <ons-toolbar-button onclick="fn.open()">
@@ -92,20 +117,34 @@
         <div class="center">
           Home
         </div>
+        <div class="right">
+          <ons-toolber-button style="bold; color: rgb(51, 113, 200); padding-right: 15px" onclick=fn.load('addtask.html')> + </ons-toolber-button>
+        </div>
       </ons-toolbar>
       <p style="text-align: left; padding-left: 20px; padding-top: 10px;">
         Today's Schedule
       </p>
 
       <!-- ここに今日のスケジュールを表示する -->
+      <ons-carousel class="today-tab" id="today" auto-refresh swipeable overscrollable item-width="70px">
+      </ons-carousel>
 
-      <p style="text-align: left; padding-left: 20px; padding-top: 40%;">
+      <p style="text-align: left; padding-left: 20px; padding-top: 20px;">
         Task List
 
       <!-- ここにタスクの一覧を表示する -->
-      <div id='resultArea'></div>
+      <div id='resultArea-home' style="word-wrap: break-word;"></div>
 
       </p>
+      
+      <div class="anim-box">
+        <input type="text" class="text-input" style="margin-left: 10px;" placeholder="タスク名" value="">
+          <p class="text-input" style="margin-left: 10px;">
+            所要時間 <input type="time" value="00:00">
+          </p> 
+        <button class="button" style="margin-right: 10px;">追加</button>
+      </div>
+      
 
     </ons-page>
   </ons-template>
@@ -120,6 +159,9 @@
       </div>
       <div class="center">
         Settings
+      </div>
+      <div class="right">
+        <ons-icon icon="md-home" style="bold; color: rgb(51, 113, 200); padding-right: 15px" onclick=fn.load('home.html')></ons-icon>
       </div>
     </ons-toolbar>
 
@@ -137,17 +179,61 @@
       <div class="center">
         Add tasks
       </div>
+      <div class="right">
+        <ons-icon icon="md-home" style="bold; color: rgb(51, 113, 200); padding-right: 15px" onclick=fn.load('home.html')></ons-icon>
+      </div>
     </ons-toolbar>
 
     <div style="text-align: center; margin-top: 30px;">
       <p>
-        <input class="text-input text-input--material" placeholder="タスク名" type="text" required>
+        <input class="text-input text-input--material" placeholder="タスク名" type="text" id="taskName" required>
       </p>
       <p>
         所要時間 <input type="time" value="00:00">
       </p>
+      <p id="target">タスク名</p>
+      <select class="select-input select-input--material" id="color1">
+      <option value="red">緊急(大事)</option>
+      <option value="blue">プチタスク</option>
+      <option value="green">毎日</option>
+      </select>
+      <input type="button" value=" 確定 " onclick="changeColor('target');" />
       <p style="margin-top: 30px;">
-        <ons-button onclick="login()">追加</ons-button>
+        <ons-button onclick="login(),">追加</ons-button>
+      </p>
+    </div>
+
+  </ons-page>
+  </ons-template>
+
+  <ons-template id="addftask.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Add tasks (a set time)
+      </div>
+      <div class="right">
+        <ons-icon icon="md-home" style="bold; color: rgb(51, 113, 200); padding-right: 15px" onclick=fn.load('home.html')></ons-icon>
+      </div>
+    </ons-toolbar>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <p>
+        <input id="summary" class="text-input text-input--material" placeholder="タスク名" type="text" required>
+      </p>
+      <p style="text-align: left; padding-left: 5%;">開始</p>
+        <input id="startdate" type="date" value="2021-12-01">
+        <input id="starttime" type="datetime" value="10:00">
+      <p style="text-align: left; padding-left: 5%;">終了</p>
+        <input id="enddate" type="date" value="2021-12-01">
+        <input id="endtime" type="datetime" value="11:00">
+      <p style="margin-top: 30px;">
+        <ons-button onclick="addftask()">追加</ons-button>
       </p>
     </div>
 
@@ -155,7 +241,7 @@
   </ons-template>
 
   <ons-template id="tasktable.html">
-  <ons-page id="needtable">
+  <ons-page id="tasktable-page">
     <ons-toolbar>
       <div class="left">
         <ons-toolbar-button onclick="fn.open()">
@@ -165,12 +251,17 @@
       <div class="center">
         Task Table
       </div>
+      <div class="right">
+        <ons-icon icon="md-home" style="bold; color: rgb(51, 113, 200); padding-right: 15px" onclick=fn.load('home.html')></ons-icon>
+      </div>
     </ons-toolbar>
 
-    <div id='resultArea'></div>
+    <div id='resultArea-tasktable'></div>
 
   </ons-page>
   </ons-template>
+
+  
 
 
 </body>

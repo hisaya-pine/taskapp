@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="shortcut icon" href="../img/h2vr.ico"   type="image/vnd.microsoft.icon" />
+	<title>h2vR.js - ライセンス情報 - tategaki.info</title>
+<style>
+body{
+	margin:0;
+	padding:0;
+	-webkit-text-size-adjust:100%;
+	font-size:15px;
+	line-height:1.8em;
+	text-align:center;
+	background:linear-gradient(to bottom right,rgba(255,140,0,0.5),rgba(255,140,0,0.8) 40%,rgba(255,140,0,1) );
+	font-family:'ヒラギノ角ゴ ProN','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ Pro','Hiragino Kaku Gothic Pro','メイリオ','Meiryo','ＭＳ ゴシック','MS Gothic','SimHei','HiraKakuProN-W3','STHeitiJ-Medium','TakaoExゴシック','TakaoExGothic','MotoyaLCedar','Droid Sans Japanese','Droid Sans Fallback',monospace;	
+}
+
+p{
+	margin:0 0 1em 0;
+	padding:0;
+}
+
+ul{
+	margin-top:0;
+	margin-bottom:1em;
+}
+
+aside{
+	margin-left:4em;
+	font-size:80%;
+	line-height:1.6;
+}
+
+h1{
+	font-size:26px;
+	margin-right:20px;
+}
+h2{
+	font-size:24px;
+	margin:5px 0;
+}
+h3{
+	font-size:20px;
+	margin:20px 0 0 10px;
+}
+h4{
+	font-size:18px;
+	margin:20px 0 0 20px;
+}
+
+aside{
+	font-size:14px;
+	margin:0 30px 20px 4em;
+}
+menu{
+	list-style-type:none;
+	width:100%;
+	padding:0;
+	margin:0 auto 0 auto;
+/*	margin-left:40px;
+	margin-right:40px;*/
+	text-align:center;
+}
+menu li{
+	display:inline-block;
+	margin:0;
+	padding:10px 20px;
+	border:1px solid #ccc;
+}
+
+.cf{
+	clear:both;
+}
+
+#container{
+	position:relative;
+	display:inline-block;
+	margin:5px 0;
+	padding:0;
+/*	width:100%;*/
+	width:980px;
+	max-width:980px;
+	height:100%;
+/*	min-height:1024px;*/
+	overflow:hidden;
+	background-color:#fcfcfc;
+	text-align:left;
+}
+
+#header{
+margin:1em 0 0 0;
+text-align:right;
+	border-bottom:5px solid darkorange;
+
+}
+
+#header a, #header a:hover, #header a:visited{
+	color:inherit;
+	text-decoration:none;
+}
+
+#footer{
+	width:100%;
+	color:#fff;
+	background-color:#444;
+	text-align:center;	
+}
+#footer a,#footer a:hover, #footer a:visited{
+	color:#fff;
+	text-decoration:none;
+}
+#footer ul{
+	padding-left:1em;
+	margin-left:0;
+	list-style-type:disc;
+}
+.footerCol{
+	display:inline-block;
+	vertical-align:top;
+	text-align:left;
+	margin:10px 20px 10px 20px;
+}
+.first,.wide{
+	max-width:98%;
+	margin:10px 20px;
+	padding:0.5em;
+}
+.wide{
+	line-height:1.8em;
+	width:930px;
+}
+
+.j{
+	text-align:justify;
+}
+
+.twoCol{
+	float:left;
+}
+
+.topMargin{
+	margin-top:1em;
+}
+
+.leftMargin{
+	margin-left:2em;
+}
+
+.bottomZero{
+	margin-bottom:0;
+}
+
+.topZero{
+	margin-top:0;
+}
+
+.code{
+	margin:10px 20px;
+	padding:0.5em;
+	border:1px solid orange;
+	background-color:#fafafa;
+	font-size:14px;
+	line-height:20px;
+}
+
+.test{
+  font-size:16px;
+  line-height:1.5em;
+	margin:20px;
+}
+.space{
+	letter-spacing:1em;
+}
+.test2{
+  font-size:16px;
+  line-height:1.5em;
+  height:160px;
+  margin:20px;
+}
+.nonStyle{
+	list-style-type:none !important;
+}
+
+.cncl{
+ font-size:16px;
+ line-height:1.6em;
+}
+.cncl li{
+	margin-bottom:1em;
+}
+
+.bottomNavi{
+	text-align:center;
+	margin:10px;
+}
+
+.triangle{
+	display:inline-block;
+	width:0px;
+	height:0px;
+	border-top:solid 15px orange;
+	border-right:solid 20px transparent;
+	border-bottom:solid 0px transparent;
+	border-left:solid 20px transparent;
+}
+#showhide{
+	border:none;
+	text-align:center;
+	vertical-align:top;
+	font-weight:bold;
+		margin-bottom:-20px;
+}
+
+#notation li{
+	margin-top:10px;
+}
+
+.dor{
+	color:darkorange;
+}
+.red{
+	color:red;
+}
+.dblue{
+	color:darkblue;
+}
+
+.darkBorder{
+	border:1px solid #ccc;
+}
+
+.ad600{
+	width:300px;height:600px;
+}
+.ad728{
+	width:728px;height:90px;margin:10px auto;
+}
+.ad336{
+	width:336px;height:280px;margin:0 30px 10px 20px;
+}
+.adFR{
+	float:right;
+}
+.adFL{
+	float:left;
+}
+
+.FL550{
+ width:550px;margin-right:0;float:left;
+}
+
+.FL530{
+ width:530px;margin-right:0;float:left;
+}
+
+.FL450{
+ width:450px;margin-right:0;float:left;
+}
+
+
+.snsBtn{
+	width:48px;
+	height:48px;
+}
+
+.mb{
+	display:none;
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="header"><a href="../"><h1>h2v<span class="dor">R</span>.js</h1></a></div>
+
+
+
+<div>
+
+
+<article class="first">
+<h2>ライセンス情報</h2>
+<p class="leftMargin">h2v<span class="dor">R</span>.jsのライセンスについて以下に記載します。</p>
+<div>
+	<div class="code darkBorder">
+		<h3>h2v.js、h2v.css、h2vR.js および h2vR.css のライセンス</h3><br />
+		Copyright (c) 2011-2015 tyz@freefielder.jp<br /><br />
+		以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル（以下「ソフトウェア」）の複製を取得する<span style="text-decoration:underline;">非営利の個人または団体が非営利を目的とする場合に限り</span>、ソフトウェアを無制限に扱うことを無償で許可します。これには、ソフトウェアの複製を使用、複写、変更、結合、掲載、および/または頒布する権利、およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。<br /><br />
+上記の著作権表示および本許諾表示を、ソフトウェアのすべての複製または重要な部分に記載するものとします。<br /><br />
+ソフトウェアは「現状のまま」で、明示であるか暗黙であるかを問わず、何らの保証もなく提供されます。ここでいう保証とは、商品性、特定の目的への適合性、および権利非侵害についての保証も含みますが、それに限定されるものではありません。 作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。<br /><br />
+	</div>
+<div class="leftMargin bottomZero"><strong>追記：2012-11-28</strong><br />
+<p class="leftMargin bottomZero">
+　「非営利の個人または団体が非営利を目的とする場合」以外での使用（ h2v.js の設置を有償で請け負う場合などを含みます）については、ライセンス料をいただいております。<br />
+　詳しくは、tyz@freefielder.jp または freefielder@gmail.com までお問い合わせください。<br /><br />
+</p>
+</div>
+<div class="leftMargin"><strong>追記：2015-05-31</strong><br />
+<p class="leftMargin">
+　h2v.jsに対してライセンス料をお支払い頂いた方は、h2v<span class="dor">R</span>.js に移行する場合でも、新たにライセンス料が発生することはありません。<br /><br />
+</p>
+</div>					
+
+
+
+</div>
+
+<p class="leftMargin">h2vR.js および h2vR.css のソースコード冒頭に、このページヘのリンクが記載されています。プログラムの改変・改造などの際にも、これらのコピーライト / ライセンス表示は削除しないでください。</p>
+<p class="leftMargin">クレジット表示に関しては、上記の「ソースコード上のコピーライト表示を削除しない」ということだけで充分です。ウェブページ上の見える場所に当方のクレジットを表示すること、あるいは当サイトへのリンク等を設置することを強制はいたしません。ご好意は謹んでお受けいたします:-)</p>
+</article>
+
+
+</div><!---->
+
+
+<div id="footer">
+<div class="footerCol">
+<ul>
+<li><a href="http://tategaki.info/">tategaki.info</a>
+	<ul>
+		<li><a href="http://tategaki.info/h2vr/">h2v<span class="dor">R</span>.js</a>
+			<ul>
+				<li><a href="http://tategaki.info/h2vr/#download">ダウンロード</a></li>
+				<li><a href="http://tategaki.info/h2vr/docs/license.php">ライセンス情報</a></li>
+				<li><a href="http://tategaki.info/h2vr/tutorial">チュートリアル</a></li>
+				<li><a href="http://tategaki.info/h2vr/docs/">ドキュメント</a></li>
+			</ul>
+		
+		</li>
+		<li><a href="http://tategaki.info/h2v/">h2v.js</a></li>
+
+	</ul>
+
+</li>
+</ul>
+</div>
+<div class="footerCol">
+	<ul>
+		<li><a href="http://tategaki.info/h2vr/docs/migrate.php">h2v.jsからh2v<span class="dor">R</span>.jsへの乗り換えガイド</a></li>
+	</ul>
+<ul>
+<li><a href="http://freefielder.jp/" target="_blank">freefielder.jp</a>
+	<ul>
+		<li><a href="http://freefielder.jp/blog/cat72/" target="_blank">縦書きに関するブログ記事</a></li>
+	</ul>
+
+</li>
+</ul>
+<ul>
+<li>ご意見・お問い合わせ
+	<ul style="font-size:13px;line-height:26px;">
+		<li>Mail:<a href="mailto:tyz@freefielder.jp">tyz@freefielder.jp</a></li>
+		<li>Mail:<a href="mailto:freefielder@gmail.com">freefielder@gmail.com</a></li>
+		<li>Twitter:<a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftategaki.info%2F&screen_name=freefielder&share_with_retweet=never&tw_p=tweetbutton" target="_blank">@freefielder</a></li>
+	</ul>
+</li>
+</ul>
+</div>
+<div class="footerCol">
+<div style="margin-top:15px;font-size:13px;">
+<ul class="nonStyle">
+<li>(c)2013-2017 tategaki.info,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a division of freefielder.jp</li>
+</ul>
+</div>
+</div>
+
+<div class="cf"></div>
+
+</div>
+
+</div><!--container-->
+
+
+</body>
+</html>
